@@ -18,15 +18,15 @@
 		            <input class="weui-input" placeholder="请输入手机号" v-model="form.phone"
 					@blur="inputCheck('手机号码', 'phone', 'phone')"/>
 		        </view>
-		        <view class="weui-cell__ft" @tap="getPhoneCode()" 
+		     <!--   <view class="weui-cell__ft" @tap="getPhoneCode()" 
 				v-if="getCodeNum === 0">
 		            <view class="weui-vcode-btn" >获取验证码</view>
 		        </view>
 				<view class="weui-cell__ft" v-else>
 				    <view class="weui-vcode-btn" style="color: #A6A6A6;">获取验..({{getCodeNum}}s)</view>
-				</view>
+				</view> -->
 		    </view>
-			<view class="weui-cell weui-cell_input weui-cell_vcode">
+			<!-- <view class="weui-cell weui-cell_input weui-cell_vcode">
 			    <view class="weui-cell__hd">
 			        <view class="weui-label">验证码</view>
 			    </view>
@@ -34,14 +34,14 @@
 			        <input class="weui-input" placeholder="请输入验证码" v-model="form.identifyCode"
 					@blur="inputCheck('验证码', 'identifyCode', 'identifyCode')"/>
 			    </view>
-			</view>
+			</view> -->
 			<view class="weui-cell weui-cell_input">
 			    <view class="weui-cell__hd">
 			        <view class="weui-label">密码：</view>
 			    </view>
 			    <view class="weui-cell__bd">
 			        <input class="weui-input" placeholder="请输入您的登录密码" v-model="form.password"
-					password="false" @blur="inputCheck('密码', 'password', 'password')"/>
+					password="false"/>
 			    </view>
 			</view>
 			<view class="weui-cell weui-cell_input">
@@ -71,7 +71,7 @@
 				form: {
 					name: '',
 					phone: '',
-					identifyCode: '',
+					// identifyCode: '',
 					password: '',
 					checkPassword: ''
 				},
@@ -117,7 +117,7 @@
 					uni.showLoading({
 						title: '加载中'
 					})
-					validataCode(this.form.phone, this.form.identifyCode).then(res => {
+					/* validataCode(this.form.phone, this.form.identifyCode).then(res => {
 						console.log(res)
 						if(res.data.code === 200) {
 							this.toAddCard()
@@ -128,7 +128,9 @@
 						}
 					}).catch(() => {
 						error('网络')
-					})
+					}) */
+					
+					this.toAddCard()
 				} else {
 					error('请将信息填写完整')
 				}
@@ -153,6 +155,7 @@
 							title: '注册成功',
 							icon: 'success'
 						})
+						debugger;
 						uni.navigateBack()
 					} else {
 						uni.hideLoading()

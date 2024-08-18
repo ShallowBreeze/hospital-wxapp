@@ -110,11 +110,11 @@
 			toPageCenter: function() {
 				var errorName = inputCheck('账号', 'string', this.name)
 				var errorPassword = inputCheck('密码', 'password', this.password)
-				if(errorName !== 'ok') {
+/* 				if(errorName !== 'ok') {
 					error(errorName)
 				} else if(errorPassword !== 'ok') {
 					error(errorPassword)
-				} else {
+				} else { */
 					uni.showLoading({
 						title: '加载中'
 					})
@@ -138,7 +138,7 @@
 						uni.hideLoading()
 						error('网络')
 					})
-				}
+				// }
 			},
 
 			/**
